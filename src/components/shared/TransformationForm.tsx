@@ -129,8 +129,6 @@ const TransformationForm = ({
     }
   }, [image, transformationType.config, type]);
 
-  console.log(type);
-
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsSubmitting(true);
 

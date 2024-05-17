@@ -4,20 +4,18 @@ import { CldImage } from 'next-cloudinary';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
-
-// import {
-//   Pagination,
-//   PaginationContent,
-//   PaginationNext,
-//   PaginationPrevious,
-// } from '@/components/ui/pagination';
+import {
+  Pagination,
+  PaginationContent,
+  PaginationNext,
+  PaginationPrevious,
+} from '@/components/ui/pagination';
 
 import { IImage } from '@/lib/database/models/image.model';
-import { Search } from './Search';
 import { transformationTypes } from '@/constants/constants';
-// import { formUrlQuery } from '@/lib/utils';
-
-// import { Search } from './Search';
+import { formUrlQuery } from '@/lib/utils';
+import { Search } from './Search';
+import { Button } from '../ui/button';
 
 export const Collection = ({
   hasSearch = false,
@@ -37,13 +35,13 @@ export const Collection = ({
   const onPageChange = (action: string) => {
     const pageValue = action === 'next' ? Number(page) + 1 : Number(page) - 1;
 
-    // const newUrl = formUrlQuery({
-    //   searchParams: searchParams.toString(),
-    //   key: 'page',
-    //   value: pageValue,
-    // });
+    const newUrl = formUrlQuery({
+      searchParams: searchParams.toString(),
+      key: 'page',
+      value: pageValue,
+    });
 
-    // router.push(newUrl, { scroll: false });
+    router.push(newUrl, { scroll: false });
   };
 
   return (
@@ -65,7 +63,7 @@ export const Collection = ({
         </div>
       )}
 
-      {/* {totalPages > 1 && (
+      {totalPages > 1 && (
         <Pagination className='mt-10'>
           <PaginationContent className='flex w-full'>
             <Button
@@ -89,7 +87,7 @@ export const Collection = ({
             </Button>
           </PaginationContent>
         </Pagination>
-      )} */}
+      )}
     </>
   );
 };

@@ -2,7 +2,7 @@
 /* eslint-disable no-prototype-builtins */
 import { aspectRatioOptions } from '@/constants/constants';
 import { type ClassValue, clsx } from 'clsx';
-// import qs from 'qs';
+import qs from 'qs';
 import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
@@ -52,36 +52,36 @@ export const dataUrl = `data:image/svg+xml;base64,${toBase64(
 // ==== End
 
 // FORM URL QUERY
-// export const formUrlQuery = ({
-//   searchParams,
-//   key,
-//   value,
-// }: FormUrlQueryParams) => {
-//   const params = { ...qs.parse(searchParams.toString()), [key]: value };
+export const formUrlQuery = ({
+  searchParams,
+  key,
+  value,
+}: FormUrlQueryParams) => {
+  const params = { ...qs.parse(searchParams.toString()), [key]: value };
 
-//   return `${window.location.pathname}?${qs.stringify(params, {
-//     skipNulls: true,
-//   })}`;
-// };
+  return `${window.location.pathname}?${qs.stringify(params, {
+    skipNulls: true,
+  })}`;
+};
 
 // REMOVE KEY FROM QUERY
-// export function removeKeysFromQuery({
-//   searchParams,
-//   keysToRemove,
-// }: RemoveUrlQueryParams) {
-//   const currentUrl = qs.parse(searchParams);
+export function removeKeysFromQuery({
+  searchParams,
+  keysToRemove,
+}: RemoveUrlQueryParams) {
+  const currentUrl = qs.parse(searchParams);
 
-//   keysToRemove.forEach((key) => {
-//     delete currentUrl[key];
-//   });
+  keysToRemove.forEach((key) => {
+    delete currentUrl[key];
+  });
 
-//   // Remove null or undefined values
-//   Object.keys(currentUrl).forEach(
-//     (key) => currentUrl[key] == null && delete currentUrl[key]
-//   );
+  // Remove null or undefined values
+  Object.keys(currentUrl).forEach(
+    (key) => currentUrl[key] == null && delete currentUrl[key]
+  );
 
-//   return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
-// }
+  return `${window.location.pathname}?${qs.stringify(currentUrl)}`;
+}
 
 // DEBOUNCE
 export const debounce = (func: (...args: any[]) => void, delay: number) => {

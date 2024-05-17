@@ -5,7 +5,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 import { Input } from '@/components/ui/input';
-// import { formUrlQuery, removeKeysFromQuery } from '@/lib/utils';
+import { formUrlQuery, removeKeysFromQuery } from '@/lib/utils';
 
 export const Search = () => {
   const router = useRouter();
@@ -15,20 +15,20 @@ export const Search = () => {
   useEffect(() => {
     const delayDebounceFn = setTimeout(() => {
       if (query) {
-        // const newUrl = formUrlQuery({
-        //   searchParams: searchParams.toString(),
-        //   key: 'query',
-        //   value: query,
-        // });
+        const newUrl = formUrlQuery({
+          searchParams: searchParams.toString(),
+          key: 'query',
+          value: query,
+        });
 
-        // router.push(newUrl, { scroll: false });
+        router.push(newUrl, { scroll: false });
       } else {
-        // const newUrl = removeKeysFromQuery({
-        //   searchParams: searchParams.toString(),
-        //   keysToRemove: ['query'],
-        // });
+        const newUrl = removeKeysFromQuery({
+          searchParams: searchParams.toString(),
+          keysToRemove: ['query'],
+        });
 
-        // router.push(newUrl, { scroll: false });
+        router.push(newUrl, { scroll: false });
       }
     }, 300);
 
